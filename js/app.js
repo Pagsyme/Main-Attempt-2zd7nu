@@ -49,6 +49,14 @@ function initializeSession() {
     height: '100%',
     resolution: '1280x720',
   };
+
+  if (OT.hasMediaProcessorSupport()) {
+    publisherOptions.videoFilter = {
+      type: 'backgroundBlur',
+      blurStrength: 'high'
+    };
+  }
+  
   const publisher = OT.initPublisher(
     'publisher',
     publisherOptions,
